@@ -90,6 +90,9 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        if (!$user) {
+            return response()->json(['error' => 'Usuário não encontrado.'], Response::HTTP_NOT_FOUND);
+        }
         $user->delete();
         return response()->json([], Response::HTTP_NO_CONTENT);
     }
