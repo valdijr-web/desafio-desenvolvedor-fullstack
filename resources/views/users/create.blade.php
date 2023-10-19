@@ -75,6 +75,7 @@
                     const successDiv = document.getElementById('success-messages');
                     successDiv.innerHTML = 'Usuário cadastrado com sucesso!';
                     successDiv.style.display = 'block';
+                    document.getElementById('user-form').reset();//limpa formulário
                 })
                 .catch(error => {
                     if (error.response && error.response.status === 422) {
