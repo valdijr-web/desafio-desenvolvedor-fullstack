@@ -71,19 +71,15 @@ class UserController extends Controller
     //atualiza dados do usuário no banco de dados
     public function update(StoreUpdateUserRequest $request, User $user)
     {
-       
-       
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->document = $request->document;
         $user->email = $request->email;
         $user->phone_number = $request->phone_number;
         $user->birth_date = $request->birth_date;
-        if(!empty($user->password)){
-            $user->password = $request->password;
-        }
-        
-
+       if(!empty($request->password)){
+           $user->password = $request->password;
+       }
         $user->save();
         return new UserResource($user);
     }
