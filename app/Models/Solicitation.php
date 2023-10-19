@@ -15,4 +15,9 @@ class Solicitation extends Model
         'quantity',
         'price',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }
