@@ -19,6 +19,7 @@
                             <th>Documento</th>
                             <th>Email</th>
                             <th>Data de Nascimento</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,8 +52,55 @@
                     { data: 'document' },
                     { data: 'email' },
                     { data: 'birth_date' },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            var editUrl = '{{ route("users.edit", ":id") }}';
+                            editUrl = editUrl.replace(':id', data.id);
+
+                            var deleteUrl = '{{ route("users.destroy", ":id") }}';
+                            deleteUrl = deleteUrl.replace(':id', data.id);
+                            return '<a href="' + editUrl + '" class="btn btn-primary btn-sm">Editar</a>' + ' <button action="' + deleteUrl + '"  type="button" class="btn btn-danger btn-sm delete-button">Deletar</button>';
+                        }
+                    }
                 ],
             });
+        });
+
+        
+        document.body.addEventListener('click', function(event) {
+            if (event.target.classList.contains('delete-button')) {// Verifique se o botão clicado possui a classe 'delete-button'
+                if (confirm('Tem certeza de que deseja excluir este usuário?')) {
+                    var deleteAction = event.target.getAttribute('action'); // Obtenha o URL de exclusão
+                    axios.delete(deleteAction)
+                        .then(function(response) {
+                            $('#user-table').DataTable().ajax.reload(null, false);
+                            // Exiba a mensagem de sucesso na div de mensagens de sucesso
+                            const successDiv = document.getElementById('success-messages');
+                            successDiv.innerHTML = 'Usuário excluído com sucesso!';
+                            successDiv.style.display = 'block';
+                        })
+                        .catch(function(error) {
+                            $('#user-table').DataTable().ajax.reload(null, false);
+                            if (error.response && error.response.status === 422) {
+                                // Erros 
+                                const errors = error.response.data.errors;
+                                let errorMessage = 'Erro!:<br>';
+
+                                for (let field in errors) {
+                                    errorMessage += `${errors[field][0]}<br>`;
+                                }
+                                // Exiba a mensagem de erro na div de mensagens de erro
+                                const errorDiv = document.getElementById('error-messages');
+                                errorDiv.innerHTML = errorMessage;
+                                errorDiv.style.display = 'block';
+                            } else {
+                                // Outros erros
+                                alert('Erro: ' + error.response.data.message);
+                            }
+                        });
+                }
+            }
         });
     </script>
 @endsection
