@@ -2,11 +2,11 @@
 
 @section('title', '- Usuários')
 @section('content')
-    <h1 class="h3 mb-2 text-gray-800">Cadastrar de Usuário</h1>
+    <h1 class="h3 mb-2 text-gray-800">Alterar de Usuário</h1>
     <!-- Formulário Cadatrar Usuário -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Adicionar Usuário</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Alterar Usuário</h6>
         </div>
         <div class="card-body">
             <div id="create-user-main-form" class="">
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    <button type="submit" class="btn btn-primary">Alterar</button>
                 </form>
             </div>
         </div>
