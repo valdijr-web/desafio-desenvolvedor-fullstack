@@ -30,12 +30,12 @@ class StoreUpdateSolicitation extends FormRequest
             ],
             'quantity' =>  [
                 'required',
-                'min:3',
+                'min:1',
                 'max:255'
             ],
             'price' =>  [
                 'required',
-                'min:3',
+                'min:1',
                 'max:255'
             ],
         ];

@@ -89,12 +89,12 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('solicitations.index')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Listar Pedidos</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('solicitations.create')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Cadastrar Pedido</span></a>
             </li>

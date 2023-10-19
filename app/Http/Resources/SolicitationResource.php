@@ -20,7 +20,7 @@ class SolicitationResource extends JsonResource
             'description' => $this->description,
             'quantity' => $this->quantity,
             'price' => $this->price,
-            'user' => $this->user()->first_name,
+            'user' => $this->user->first_name,
             'created_at' => Carbon::make($this->created_at)->format('Y-m-d') ,
         ];
     }

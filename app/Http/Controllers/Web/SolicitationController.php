@@ -13,7 +13,7 @@ class SolicitationController extends Controller
      */
     public function index()
     {
-        //
+        return view('solicitations.index');
     }
 
     /**
@@ -21,15 +21,7 @@ class SolicitationController extends Controller
      */
     public function create()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('solicitations.create');
     }
 
     /**
@@ -45,22 +37,11 @@ class SolicitationController extends Controller
      */
     public function edit(Solicitation $solicitation)
     {
-        //
+        return view('solicitations.edit',[
+            'solicitation' => $solicitation
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Solicitation $solicitation)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Solicitation $solicitation)
-    {
-        //
-    }
+   
 }
