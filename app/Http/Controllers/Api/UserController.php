@@ -14,11 +14,6 @@ class UserController extends Controller
     //retora a listagem de usuários
     public function index(Request $request)
     {
-        //$perPage = $request->input('per_page', 10); // Define o número de itens por página (padrão: 10)
-        //$users = User::paginate();
-//
-        //return UserResource::collection($users);
-
         $draw = $request->input('draw');
         $start = $request->input('start');
         $length = $request->input('length');
